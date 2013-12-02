@@ -14,6 +14,11 @@ Our goal was to move to CoffeeScript, use Play's [built-in
 support][playrequire] for [RequireJS][requirejs], and use [Mocha][mocha] for the
 frontend unit and functional tests.
 
+## TL;DR ##
+
+Mocha and Grunt can be made to work with CoffeeScript and RequireJS on a Play
+project.  Get files [here][files].
+
 ## Why Coffee/RequireJS/Mocha? ###
 
 ### CoffeeScript ###
@@ -115,7 +120,7 @@ was changed to `User` and the define block for `UserProfileController` was
 changed to look like this:
 
 ```javascript
-define(['models/User], function(User){
+define(['models/User'], function(User){
   var UserProfileController = Spine.Controller.sub();
   // other code ...
   return UserProfileController;
@@ -182,7 +187,7 @@ To install Grunt and some related tools, I set up this `package.json` file:
 {
   "name": "my-application",
   "version": "0.0.0",
-  "repository": "git@github.com:usernaem/repository.git",
+  "repository": "git@github.com:username/repository.git",
   "dependencies": {
     "requirejs": "2.1.x",
     "sinon": "1.6.x",
@@ -647,7 +652,7 @@ and we should be able to run the whole thing with `grunt test`.
 
 ### Jasmine to Chai Converstion ###
 
-Next I had to change all the tests to use the [Chai DSL][chaijs] instead of Jasmine's
+Next I had to change all the tests to use the [Chai DSL][chai] instead of Jasmine's
 expectations.  I decided to use Chai's [expect API][chaiexpect], since it's the
 closes to Jasmine's, and entails the least amount of work.
 
@@ -1107,18 +1112,19 @@ Whenever you make a change this big, it's always a good idea to update your
 
 To get set up for frontend testing, just install the frontend tools w/ npm: 
 
-    cd servicetown
-    npm install --save-dev
+    cd my_project npm install --save-dev
 
 #### Testing
 
 * `grunt test:run` to run tests on the command line
-* `grunt test:serve` will serve tests at `http://localhost:8000/.mocha/index.html`
+* `grunt test:serve` will serve tests at
+  `http://localhost:8000/.mocha/index.html`
 
 If you want to automatically re-run test when files are saved use:
 
 * `grunt test:run:watch` to automatically run tests on the command line
-* `grunt test:serve:watch` to automatically run tests in the browser.  Note: you will need a LiveReload extension for your browser.
+* `grunt test:serve:watch` to automatically run tests in the browser.  Note: you
+  will need a LiveReload extension for your browser.
 ```
 
 ## Wrapping Up ##
@@ -1139,6 +1145,9 @@ This setup works nicely, but could be improved:
 * Export custom tasks to their own library
 * Load grunt tasks via [load-grunt-tasks][load-grunt-tasks] or similar.
 
+### Getting the files ###
+
+The files from this post can be downloaded [here][files].
 
 [jasmine]:http://pivotal.github.io/jasmine/
 [jhw]:http://johnbintz.github.io/jasmine-headless-webkit/

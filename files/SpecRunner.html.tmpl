@@ -1,0 +1,41 @@
+<!DOCTYPE>
+<html>
+<head>
+  <meta charset="utf-8">
+  <% _.each(static_deps, function(dependency){ %>
+  <script type="text/javascript" src="../<%= dependency %>"></script>
+  <% }) %>
+  <script type="text/javascript" src="./templates.js"></script>
+  <!-- 
+    Directly include config file to avoid nested requires
+    each time a resource is required (1 to get the paths
+    and a second time to actually require the desired file).
+  -->
+  <script type="text/javascript">
+    mocha.setup('bdd');
+    var expect = chai.expect;
+  </script>
+  <link rel="stylesheet" href="../node_modules/mocha/mocha.css"></script>
+</head>
+</html>
+<body>
+  <div id="mocha"></div>
+  <!-- Include the tests. -->
+  <script type="text/javascript" charset="utf-8">
+    require([<%= _.map(tests, function(test){ return '"'+test+'"'} ).join(', ') %> ], function(){
+
+      if(window.mochaPhantomJS) {
+        mochaPhantomJS.run()
+      } else {
+        mocha.run();
+      }
+
+    });
+  </script>
+  <% if(config.runningIn === "browser") { %>
+  <script src="//localhost:35729/livereload.js" type="text/javascript"></script>
+  <% } %>
+
+</body>
+</html>
+

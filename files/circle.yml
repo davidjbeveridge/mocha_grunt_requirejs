@@ -1,0 +1,6 @@
+test:
+  override:
+    - grunt test:run
+dependencies:
+  override:
+    - npm install --save-dev
