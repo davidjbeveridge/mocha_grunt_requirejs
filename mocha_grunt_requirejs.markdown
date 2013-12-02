@@ -1145,6 +1145,12 @@ This setup works nicely, but could be improved:
 * Export custom tasks to their own library
 * Load grunt tasks via [load-grunt-tasks][load-grunt-tasks] or similar.
 
+Oh, make sure you install the LiveReload extension for your browser if you want
+to use LiveReload
+
+* [LiveReload for Chrome][livreload-chrome]
+* [LiveReload for Firefox][livereload-firefox]
+
 ### Getting the files ###
 
 The files from this post can be downloaded [here][files].
@@ -1177,4 +1183,6 @@ The files from this post can be downloaded [here][files].
 [grunt-coffeelint]:https://github.com/vojtajina/grunt-coffeelint
 [load-grunt-tasks]:https://github.com/sindresorhus/load-grunt-tasks
 [files]:https://github.com/davidjbeveridge/mocha_grunt_requirejs/tree/master/files
+[livreload-chrome]:https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=en
+[livereload-firefox]:https://addons.mozilla.org/en-US/firefox/addon/livereload/
 
